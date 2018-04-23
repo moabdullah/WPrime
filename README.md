@@ -5,7 +5,7 @@ These files are supplementary to:
 
 "Probing a simplified, W′ model of R(D(∗)) anomalies using b-tags, τ leptons and missing energy"
 
-Paper Authors: Mohammad Abdullaha, Julian Callec, Bhaskar Duttaa, Andr ́es Fl ́orezb, Diego Restrepoc
+Paper Authors: Mohammad Abdullah, Julian Calle, Bhaskar Dutta, Andrés Flórez, Diego Restrepo
 
 arXiv: 1805.xxxx
 

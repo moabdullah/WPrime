@@ -1,0 +1,135 @@
+(* ********************************************************* *)
+(* *****                                               ***** *)
+(* *****  FeynRules model file: SM + W&Z prime	       ***** *)
+(* *****  Original Author:  M. Abdullah                ***** *)
+(* *****                                               ***** *)
+(* ********************************************************* *)
+
+(* ************************** *)
+(* *****  Information   ***** *)
+(* ************************** *)
+M$ModelName = "WZPrime";
+M$Information = { Authors->{"M. Abdullah"}, 
+		  Emails->{"mabdullah@tamu.edu"}, 
+		  Institutions->{"Texas A&M University"},
+          Date->"2017 Jan 11", 
+		  Version->"1.0"};
+FeynmanGauge = True;
+
+
+
+
+
+(* ************************** *)
+(* *****     Fields     ***** *)
+(* ************************** *)
+M$ClassesDescription = {
+(* W prime boson *)
+  V[34] == {
+	ClassName        -> Wp,
+	SelfConjugate    -> False,
+	Mass             -> {MWp,  500.00},
+	Width            -> {WWp,    50},
+	ParticleName     -> "Wp+",
+	AntiParticleName -> "Wp-",
+    QuantumNumbers   -> {Q -> 1},
+	PDG              -> 34, 
+	PropagatorLabel  -> "Wp",
+	PropagatorType   -> Sine,
+	PropagatorArrow  -> None,
+	FullName         -> "Wp"
+  },
+
+
+(* Z prime boson *)
+  V[32] == {
+	ClassName        -> Zp,
+	SelfConjugate    -> True,
+	Mass             -> {MZp,  500.00},
+	Width            -> {WZp,    50},
+	ParticleName     -> "Zp",
+	PDG              -> 32, 
+	PropagatorLabel  -> "Zp",
+	PropagatorType   -> Sine,
+	PropagatorArrow  -> None,
+	FullName         -> "Zp"
+  }
+};
+
+(* ************************** *)
+(* *****   Parameters   ***** *)
+(* ************************** *)
+M$Parameters = {
+  gb == { ParameterType -> External, 
+	  Value -> 0.1,
+	  InteractionOrder -> {BSM, 1},
+	  BlockName->ZprimeCouplings,
+	  TeX -> Subscript[g,b], 
+          Description -> "Z' coupling to 3rd gen quarks"
+	},
+
+  gmu == { ParameterType -> External, 
+	  Value -> 0.1,
+	  InteractionOrder -> {BSM, 1}, 
+	  TeX -> Subscript[g,mu], 
+	  BlockName->ZprimeCouplings,
+          Description -> "Z' coupling to 2nd gen leptons"
+	},
+	
+	gtau == { ParameterType -> External, 
+	  Value -> 0.1,
+	  InteractionOrder -> {BSM, 1}, 
+	  TeX -> Subscript[g,tau], 
+	  BlockName->ZprimeCouplings,
+          Description -> "Z' coupling to 3rd gen leptons"
+	},
+	
+	delbs == { ParameterType -> External, 
+	  Value -> 1.0,
+	  InteractionOrder -> {BSM, 0}, 
+	  TeX -> Subscript[delta,bs], 
+	  BlockName->ZprimeCouplings,
+          Description -> "Z' coupling scale factor to b and s quarks"
+	},
+	
+	gwp == {ParameterType -> External,
+	Value -> 0.1,
+	InteractionOrder -> {BSM,1},
+	TeX -> Subscript[g,wp],
+	Description -> "W' coupling",
+	BlockName->WprimeCoupling,
+	Description-> "W' coupling"
+	},
+	
+	Vcb == { ParameterType -> Internal,
+	Value -> 0.0412,
+	InteractionOrder -> {BSM,0},
+	TeX -> Subscript[V,cb],
+	Description -> "c-b CKM mixing"
+	}
+
+};
+
+
+(* ******************************* *)
+(* *****   BSM Lagrangians   ***** *)
+(* ******************************* *)
+
+LZQ := gb*Zp[mu]*( tbar.Ga[mu].ProjM.t \
+			   +  bbar.Ga[mu].ProjM.b \
+			   + delbs*sbar.Ga[mu].ProjM.b \
+			   +HC[delbs*sbar.Ga[mu].ProjM.b]);
+			   
+LZL := 			gmu*Zp[mu]*(mubar.Ga[mu].mu \
+				+vmbar.Ga[mu].ProjM.vm)\
+				+gtau*Zp[mu]*(tabar.Ga[mu].ta \
+				+vtbar.Ga[mu].ProjM.vt);
+				
+LW  := gwp*(Wp[mu]*cbar.Ga[mu].ProjM.b \
+		+HC[Wp[mu]*cbar.Ga[mu].ProjM.b] \
+		+Wp[mu]*vtbar.Ga[mu].ProjM.ta \
+		+HC[Wp[mu]*vtbar.Ga[mu].ProjM.ta]);
+
+(* Combine Everything *)
+
+LFull := LSM + LZQ + LZL + LW;

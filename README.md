@@ -1,14 +1,19 @@
 # WPrime
 W' Search - Supplementary Material
+
 These files are supplementary to:
+
 "Probing a simplified, W′ model of R(D(∗)) anomalies using b-tags, τ leptons and missing energy"
+
 Paper Authors: Mohammad Abdullaha, Julian Callec, Bhaskar Duttaa, Andr ́es Fl ́orezb, Diego Restrepoc
+
 arXiv: 1805.xxxx
 
 You may cite the paper above if you use codes from this repository.
 For comments, feedback, questions...etc please email mabdullah@tamu.edu
 
 Index:
+
 FeynRules_UFO:
 .fr files for the model and ready-to-load UFO files
 

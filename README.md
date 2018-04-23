@@ -27,5 +27,8 @@ This noteboook was used to:
 -Calculate the translate the significance into a mass vs. couplings plot
 -Recast the existing limits from ATLAS and CMS
 
-Note Provided:
+Not Provided:
+
 The analysis code used to calculate the efficiencies
+
+Cards used to generate the background

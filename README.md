@@ -1,5 +1,6 @@
 # WPrime
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1240452.svg)](https://doi.org/10.5281/zenodo.1240452)
+
 W' Search - Supplementary Material
 
 These files are supplementary to:

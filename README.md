@@ -9,7 +9,7 @@ These files are supplementary to:
 
 Paper Authors: Mohammad Abdullah, Julian Calle, Bhaskar Dutta, Andrés Flórez, Diego Restrepo
 
-arXiv: 1805.xxxx
+arXiv: 1805.01869 
 
 You may cite the paper above if you use codes from this repository.
 For comments, feedback, questions...etc please email mabdullah@tamu.edu
